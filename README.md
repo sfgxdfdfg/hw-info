@@ -1,1 +1,1 @@
-# This app is WIP so it doesnt a have lot of stuff at the moment
+# This app is WIP so it doesnt a have lot of stuff at the moment.

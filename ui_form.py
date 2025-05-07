@@ -42,6 +42,10 @@ class Ui_MainWindow(object):
         self.cpubrand.setObjectName(u"cpubrand")
         self.cpubrand.setGeometry(QRect(0, 0, 541, 31))
         self.cpubrand.setFont(font)
+        self.totalram = QLabel(self.widget)
+        self.totalram.setObjectName(u"totalram")
+        self.totalram.setGeometry(QRect(0, 110, 541, 31))
+        self.totalram.setFont(font)
         MainWindow.setCentralWidget(self.widget)
         self.menuBar = QMenuBar(MainWindow)
         self.menuBar.setObjectName(u"menuBar")
@@ -60,6 +64,7 @@ class Ui_MainWindow(object):
         self.cpuarch.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.cpucores.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.cpubrand.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.totalram.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         pass
     # retranslateUi
 

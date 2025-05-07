@@ -2,6 +2,7 @@
 import sys
 import platform
 import cpuinfo
+import psutil
 
 from PySide6.QtWidgets import QApplication, QMainWindow
 
@@ -25,10 +26,25 @@ class MainWindow(QMainWindow):
 
         self.ui.cpubrand.setStyleSheet("color: red")
         self.ui.cpuarch.setStyleSheet("color: green")
-        self.ui.cpucores.setStyleSheet("color: blue")
+        self.ui.cpucores.setStyleSheet("color: yellow")
+        
+        def get_size(bytes, suffix="B"):
+            """
+            Scale bytes to its proper format
+            e.g:
+                1253656 => '1.20MB'
+                1253656678 => '1.17GB'
+            """
+            factor = 1024
+            for unit in ["", "K", "M", "G", "T", "P"]:
+                if bytes < factor:
+                    return f"{bytes:.2f}{unit}{suffix}"
+                bytes /= factor
 
-        # self.ui.totalram.setText(f"Total memory:  {cpu_cores['count']}")
-        # self.ui.totalvram.setText(f"Total video memory:  {cpu_cores['count']}")
+        svmem = psutil.virtual_memory()
+        self.ui.totalram.setText(f"Total ram: {get_size(svmem.total)}")
+        
+        self.ui.totalram.setStyleSheet("color: red")
 
         self.ui.cpubrand.setStyleSheet("color: red")
         self.ui.cpuarch.setStyleSheet("color: green")
